@@ -6,3 +6,8 @@ lazy val root = (project in file("."))
   .settings(
     name := "WordCount"
   )
+
+libraryDependencies ++= Seq(
+  "org.scalatest" %% "scalatest" % "3.2.11",
+  "org.scalatest" %% "scalatest" % "3.2.11" % "test"
+)

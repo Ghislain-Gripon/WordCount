@@ -1,6 +1,9 @@
-class MapReduceTask[A](Data: A, MappingFunction: () => List[ValueCount[A]]) extends Task {
-  override def execute(): List[ValueCount[A]] = {
-
-    return
+class MapReduceTask(Data: String) extends Task {
+  override def execute(): List[(String, Int)] = {
+    val mappingTask = new MapTask(Data)
+    val mapping = mappingTask.execute()
+    val reducingTask = new ReduceTask(mapping)
+    val reducedMapping = reducingTask.execute()
+    reducedMapping
   }
 }
