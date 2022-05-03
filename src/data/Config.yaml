@@ -1,0 +1,17 @@
+version: "1.0"
+data:
+  directory: "data"
+  test: "TestData.txt"
+  main: "TextToCount.txt"
+test:
+  directory: "test"
+  scala_test:
+    directory: "scala"
+    #tests_to_run is a list of test filenames to execute
+    tests_to_run:
+  cucumber:
+    gherkin: "resources/features"
+    step_definition: "scala/steps"
+threads:
+  used_or_not: false
+  maximum_number: 8
