@@ -8,7 +8,8 @@ object MapReduce {
   def main(args: Array[String]): Unit = {
     var result: List[(String, Int)] = null
     try {
-      using(scala.io.Source.fromFile("/Users/ggripon/IdeaProjects/WordCount/src/Data/TextToCount.txt")) { source => {
+      val config = new Configuration()
+      using(scala.io.Source.fromFile(config.main_data)) { source => {
         val mapReduceTask = new MapReduceTask(source.mkString)
         result = mapReduceTask.execute()
       }
@@ -16,8 +17,8 @@ object MapReduce {
         //Sorting the result to get the words with the most occurrences first.
       }
     } catch {
-      case e: FileNotFoundException => println("Couldn't find that file.")
-      case e: IOException => println("Got an IOException!")
+      case e: FileNotFoundException => println("Couldn't find that file. " + e.getMessage)
+      case e: IOException => println("Got an IOException! " + e.getMessage)
     }
     //Control structure that enables auto disposal and closure of resources upon leaving the control block so
     //that files get closed automatically

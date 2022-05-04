@@ -1,14 +1,19 @@
 version: "1.0"
 data:
-  directory: "data"
+  directory: "src/data"
   test: "TestData.txt"
   main: "TextToCount.txt"
 test:
-  directory: "test"
+  directory: "src/test"
   scala_test:
     directory: "scala"
     #tests_to_run is a list of test filenames to execute
     tests_to_run:
+      - "ConfigurationTest.scala"
+      - "MapTaskTest.scala"
+      - "ReduceTaskTest.scala"
+      - "MapReduceTaskTest.scala"
+      - "RunCucumberTest.scala"
   cucumber:
     gherkin: "resources/features"
     step_definition: "scala/steps"

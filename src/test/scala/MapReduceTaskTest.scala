@@ -1,14 +1,26 @@
-import WordCountCucumberScala_GhislainGripon.MapReduceTask
+import WordCountCucumberScala_GhislainGripon._
 import org.scalatest.wordspec.AnyWordSpec
+import java.io.{FileNotFoundException, IOException}
+import scala.io.Source.fromFile
 
 class MapReduceTaskTest extends AnyWordSpec {
   val reduceTaskTest = new ReduceTaskTest
   val mapTaskTest = new MapTaskTest
-  val data = "This is a test string. C'est une chaine de charactères de test. Devons nous ? La victoire : (En avant !)"
+  var data: String = ""
+  try {
+    Control.using(fromFile(new Configuration().test_data)) { source =>
+      data = source.mkString
+    }
+  }
+  catch {
+    case e: FileNotFoundException => println("Couldn't find that file. " + e.getMessage)
+    case e: IOException => println("Got an IOException! " + e.getMessage)
+  }
+
   val mapReduceTask = new MapReduceTask(data)
   val mapReduceResult: List[(String, Int)] = mapReduceTask.execute()
 
-  "A Map Reduce WordCountCucumberScala_GhislainGripon.Task" should {
+  "A MapReduceTask" should {
     "succeed both the tests of its subtasks" in {
       mapTaskTest.execute()
       reduceTaskTest.execute()
@@ -22,10 +34,9 @@ class MapReduceTaskTest extends AnyWordSpec {
       assert(!mapReduceResult.exists(_._1.contains(Seq(',', '?', '.', ';', ':', '\'', ')', '(', '!'))))
     }
 
-    "give values superior or equal to 1" in
-      {
-        assert(!mapReduceResult.exists(_._2 < 1))
-      }
+    "give values superior or equal to 1" in {
+      assert(!mapReduceResult.exists(_._2 < 1))
+    }
 
     "not be empty" in {
       assert(mapReduceResult.nonEmpty)
@@ -35,7 +46,5 @@ class MapReduceTaskTest extends AnyWordSpec {
       assert(mapReduceResult.distinct.size == mapReduceResult.size)
     }
   }
-
-
 
 }
