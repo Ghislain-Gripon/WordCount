@@ -4,7 +4,7 @@
   <artifactId>WordCountCucumberScala_GhislainGripon</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>${project.artifactId}</name>
-  <description>My wonderfull scala app</description>
+  <description>My wonderful scala app</description>
   <inceptionYear>2018</inceptionYear>
   <licenses>
     <license>
@@ -20,7 +20,7 @@
     <encoding>UTF-8</encoding>
     <scala.version>2.13.8</scala.version>
     <scala.compat.version>2.13</scala.compat.version>
-    <spec2.version>4.14.1</spec2.version>
+    <spec2.version>4.15.0</spec2.version>
   </properties>
 
   <dependencies>
@@ -40,7 +40,7 @@
     <dependency>
       <groupId>org.scalatest</groupId>
       <artifactId>scalatest_${scala.compat.version}</artifactId>
-      <version>3.2.11</version>
+      <version>3.2.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>

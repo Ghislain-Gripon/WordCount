@@ -46,11 +46,13 @@ class Configuration(private var configFilePath: String = "") {
     throw FieldEmptyError(s"The field at $field is empty.")
   }
 
+  override def toString: String = _ConfigJson.toString()
+
 }
 
 /*object test {
   def main(args: Array[String]): Unit = {
     val config = new Configuration()
-    println(config.tests_to_run)
+    println(config.toString)
   }
 }*/
