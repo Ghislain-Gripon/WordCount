@@ -4,7 +4,6 @@ import WordCountCucumberScala_GhislainGripon.FieldEmptyError
 
 class ConfigurationTest extends AnyWordSpec {
   val config = new Configuration()
-  val configFileSelect = new Configuration("src/data/Config.yaml")
 
   "A Configuration class instance" should {
     "throw an error if there are no correct config file at specified location" in {
@@ -26,11 +25,16 @@ class ConfigurationTest extends AnyWordSpec {
       assert(config.tests_to_run.isInstanceOf[List[String]])
     }
 
+    "return the configuration file with toString" in {
+      assert(config.toString.isInstanceOf[String])
+      assert(config.toString.nonEmpty)
+    }
+
   }
 
   "FieldEmptyError" should {
     "send its error message" in {
-      assertThrows(throw FieldEmptyError("FieldEmptyError throws this message."))
+      assertThrows[Exception](throw FieldEmptyError("FieldEmptyError throws this message."))
     }
   }
 }

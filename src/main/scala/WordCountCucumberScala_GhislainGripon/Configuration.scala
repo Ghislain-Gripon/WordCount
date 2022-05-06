@@ -26,8 +26,8 @@ class Configuration(private var configFilePath: String = "") {
     case e: IOException => println("Got an IOException! " + e.getMessage)
   }
 
-  private val _ConfigJson: Json = parser.parse(_yamlString.get).getOrElse(Json.Null)
-  private val _cursor: HCursor = _ConfigJson.hcursor
+  private val _configJson: Json = parser.parse(_yamlString.get).getOrElse(Json.Null)
+  private val _cursor: HCursor = _configJson.hcursor
   private val _data_directory: ACursor = _cursor.downField("data").downField("directory")
   private val _test_directory: ACursor = _cursor.downField("test").downField("directory")
   private val _scala_test_directory: ACursor = _cursor.downField("test").downField("scala_test").downField("directory")
@@ -46,13 +46,19 @@ class Configuration(private var configFilePath: String = "") {
     throw FieldEmptyError(s"The field at $field is empty.")
   }
 
-  override def toString: String = _ConfigJson.toString()
+  override def toString: String = _configJson.toString()
 
 }
 
 /*object test {
   def main(args: Array[String]): Unit = {
-    val config = new Configuration()
-    println(config.toString)
+    val test: Json = parser.parse(
+      """
+        |{ test = "value" }
+        |""".stripMargin).getOrElse(Json.Null)
+    println(test.toString)
+    test.hcursor. (parser.parse("""{ this : "worked"}""").getOrElse(Json.Null))
+    println(test.toString)
+
   }
 }*/
