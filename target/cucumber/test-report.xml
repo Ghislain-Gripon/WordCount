@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="0.533">
+<testcase classname="Program that counts occurrences of words in text" name=":" time="0.264">
+<system-out><![CDATA[Given there is a configuration file at ""...................................passed
+And the configuration file is read..........................................passed
+And there is text...........................................................passed
+When text is read...........................................................passed
+Then text is given to the program...........................................passed
+Then the program returns a list of words and their occurrence figure........passed
+]]></system-out>
+</testcase>
+<testcase classname="Program that counts occurrences of words in text" name=":_2" time="0.015">
+<system-out><![CDATA[Given there is a configuration file at "src/data/Config.yaml"...............passed
+And the configuration file is read..........................................passed
+And there is text...........................................................passed
+When text is read...........................................................passed
+Then text is given to the program...........................................passed
+Then the program returns a list of words and their occurrence figure........passed
+]]></system-out>
+</testcase>
+</testsuite>
