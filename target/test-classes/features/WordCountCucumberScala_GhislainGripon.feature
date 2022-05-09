@@ -1,4 +1,6 @@
 Feature: Program that counts occurrences of words in text
+
+  @mapreduce
   Scenario Outline: :
     Given there is a configuration file at "<path>"
     And the configuration file is read
@@ -8,5 +10,7 @@ Feature: Program that counts occurrences of words in text
     Then the program returns a list of words and their occurrence figure
 
   Examples:
-    | path 
+    |         path         |
+    |                      |
+    | src/data/Config.yaml |
 

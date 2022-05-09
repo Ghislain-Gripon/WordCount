@@ -1,4 +1,6 @@
 Feature: Program that counts occurrences of words in text
+
+  @mapreduce
   Scenario Outline: :
     Given there is a configuration file at "<path>"
     And the configuration file is read

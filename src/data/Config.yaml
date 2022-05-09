@@ -1,3 +1,4 @@
+_id: "MongoDB_1.0"
 version: "1.0"
 data:
   directory: "src/data"
@@ -20,3 +21,8 @@ test:
 threads:
   used_or_not: false
   maximum_number: 8
+dbserver:
+  engine: "mongodb"
+  port: 27017
+  host: "localhost"
+  database: "myDB"

@@ -97,6 +97,11 @@
       <artifactId>circe-parser_2.13</artifactId>
       <version>0.14.1</version>
     </dependency>
+    <dependency>
+      <groupId>io.circe</groupId>
+      <artifactId>circe-generic-extras_2.13</artifactId>
+      <version>0.14.1</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -141,7 +146,7 @@
           <junitxml>.</junitxml>
           <filereports>TestSuiteReport.txt</filereports>
           <!-- Comma separated list of JUnit test class names to execute -->
-          <jUnitClasses>scala/RunCucumberTest</jUnitClasses>
+          <jUnitClasses>scala/steps.RunCucumberTest</jUnitClasses>
         </configuration>
         <executions>
           <execution>
