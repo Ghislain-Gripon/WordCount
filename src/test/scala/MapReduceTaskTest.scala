@@ -8,7 +8,7 @@ class MapReduceTaskTest extends AnyWordSpec {
   val mapTaskTest = new MapTaskTest
   var data: String = ""
   try {
-    Control.using(fromFile(new Configuration().test_data)) { source =>
+    FileHandler.using(fromFile(new Configuration().test_data)) { source =>
       data = source.mkString
     }
   }

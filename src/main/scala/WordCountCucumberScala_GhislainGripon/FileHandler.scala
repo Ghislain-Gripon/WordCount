@@ -1,6 +1,7 @@
 package WordCountCucumberScala_GhislainGripon
 import java.io._
 import scala.io.Source.fromFile
+import scala.language.reflectiveCalls
 
 object FileHandler {
   def using[A <: {def close(): Unit}, B](resource: A)(f: A => B): B =
@@ -26,11 +27,11 @@ object FileHandler {
 
   def write(path: String, data: String): Unit = {
     try {
-      using(new File(path)) { source =>
-        val bw = new BufferedWriter(new FileWriter(source))
-        bw.write(data)
-        bw.close()
-      }
+      val source = new File(path)
+      val bw = new BufferedWriter(new FileWriter(source))
+      bw.write(data)
+      bw.close()
+
     }
     catch {
       case e: FileNotFoundException => println("Couldn't find that file. " + e.getMessage)

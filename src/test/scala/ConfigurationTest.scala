@@ -1,6 +1,5 @@
 import org.scalatest.wordspec.AnyWordSpec
 import WordCountCucumberScala_GhislainGripon.Configuration
-import WordCountCucumberScala_GhislainGripon.FieldEmptyError
 
 class ConfigurationTest extends AnyWordSpec {
   val config = new Configuration()
@@ -23,6 +22,13 @@ class ConfigurationTest extends AnyWordSpec {
       assert(config.step_definition.isInstanceOf[String])
       assert(config.thread_use_or_not.isInstanceOf[Boolean])
       assert(config.tests_to_run.isInstanceOf[List[String]])
+      assert(config.engine.isInstanceOf[String])
+      assert(config.port.isInstanceOf[Int])
+      assert(config.database.isInstanceOf[String])
+      assert(config.host.isInstanceOf[String])
+      assert(config.text_table.isInstanceOf[String])
+      assert(config.result_table.isInstanceOf[String])
+      assert(config.id.isInstanceOf[String])
     }
 
     "return the configuration file with toString" in {
@@ -30,11 +36,5 @@ class ConfigurationTest extends AnyWordSpec {
       assert(config.toString.nonEmpty)
     }
 
-  }
-
-  "FieldEmptyError" should {
-    "send its error message" in {
-      assertThrows[Exception](throw FieldEmptyError("FieldEmptyError throws this message."))
-    }
   }
 }

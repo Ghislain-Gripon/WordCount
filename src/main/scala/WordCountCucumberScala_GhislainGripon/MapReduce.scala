@@ -1,6 +1,6 @@
 package WordCountCucumberScala_GhislainGripon
 
-import WordCountCucumberScala_GhislainGripon.Control.using
+import WordCountCucumberScala_GhislainGripon.FileHandler.using
 
 import java.io.{FileNotFoundException, IOException}
 

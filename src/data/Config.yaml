@@ -26,3 +26,5 @@ dbserver:
   port: 27017
   host: "localhost"
   database: "myDB"
+  text_table: "rawText"
+  result_table: "mapreduceResults"

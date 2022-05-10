@@ -48,7 +48,9 @@ class Configuration(var configFilePath: String = "") {
                      engine: String,
                      port: Int,
                      host: String,
-                     database: String
+                     database: String,
+                     text_table: String,
+                     result_table: String
                      )
 
   private case class Config(
@@ -66,6 +68,7 @@ class Configuration(var configFilePath: String = "") {
     .flatMap(_.as[Config])
     .valueOr(throw _)
 
+  val id: String = _config._id
   val version: String = _config.version
   val test_data: String = _config.data.directory + "/" + _config.data.test
   val main_data: String = _config.data.directory + "/" + _config.data.main
@@ -79,6 +82,8 @@ class Configuration(var configFilePath: String = "") {
   val port: Int = _config.dbserver.port
   val host: String = _config.dbserver.host
   val database: String = _config.dbserver.database
+  val text_table: String = _config.dbserver.text_table
+  val result_table: String = _config.dbserver.result_table
 
   private def getCredentials: List[String] = {
     var result: List[String] = List()
