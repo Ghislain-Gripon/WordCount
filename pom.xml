@@ -44,6 +44,16 @@
       <version>4.6.0</version>
     </dependency>
     <dependency>
+      <groupId>org.mongodb.scala</groupId>
+      <artifactId>mongo-scala-bson_2.13</artifactId>
+      <version>4.6.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.36</version>
+    </dependency>
+    <dependency>
       <groupId>org.scalatest</groupId>
       <artifactId>scalatest_${scala.compat.version}</artifactId>
       <version>3.2.12</version>

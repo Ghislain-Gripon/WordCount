@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="mongodb.scala.mongo.bson_2.13" type="repository">
+    <properties maven-id="org.mongodb.scala:mongo-scala-bson_2.13:4.6.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/mongodb/scala/mongo-scala-bson_2.13/4.6.0/mongo-scala-bson_2.13-4.6.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.13.6/scala-library-2.13.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-reflect/2.13.6/scala-reflect-2.13.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/mongodb/bson/4.6.0/bson-4.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

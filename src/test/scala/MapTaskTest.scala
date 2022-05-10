@@ -1,5 +1,6 @@
-import WordCountCucumberScala_GhislainGripon.{Configuration, Control, MapTask}
+import WordCountCucumberScala_GhislainGripon.{Configuration, FileHandler, MapTask}
 import org.scalatest.wordspec.AnyWordSpec
+
 import java.io.{FileNotFoundException, IOException}
 import scala.io.Source.fromFile
 
@@ -7,7 +8,7 @@ class MapTaskTest extends AnyWordSpec {
 
   var data: String = ""
   try {
-    Control.using(fromFile(new Configuration().test_data)) { source =>
+    FileHandler.using(fromFile(new Configuration().test_data)) { source =>
       data = source.mkString
     }
   }

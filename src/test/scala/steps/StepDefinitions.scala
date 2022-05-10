@@ -1,6 +1,6 @@
 package steps
 
-import WordCountCucumberScala_GhislainGripon.Control.using
+import WordCountCucumberScala_GhislainGripon.FileHandler.using
 import io.cucumber.scala.{EN, ScalaDsl}
 import WordCountCucumberScala_GhislainGripon._
 import scala.reflect.io.File
