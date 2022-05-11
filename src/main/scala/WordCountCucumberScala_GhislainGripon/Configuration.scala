@@ -18,7 +18,6 @@ class Configuration(var configFilePath: String = "") {
   _yamlString = Some(FileHandler.read(configFilePath))
 
   private case class Data(
-                 directory: String,
                  test: String,
                  main: String
                  )
@@ -44,13 +43,24 @@ class Configuration(var configFilePath: String = "") {
                     maximum_number: Int
                     )
 
+  private case class FindCommand(
+                         command: String,
+                         filter: String
+                         )
+
+  private case class InsertCommand(
+                           command: String
+                           )
+
   private case class Dbserver(
                      engine: String,
                      port: Int,
                      host: String,
                      database: String,
                      text_table: String,
-                     result_table: String
+                     result_table: String,
+                     find: FindCommand,
+                     insert: InsertCommand
                      )
 
   private case class Config(
@@ -70,8 +80,8 @@ class Configuration(var configFilePath: String = "") {
 
   val id: String = _config._id
   val version: String = _config.version
-  val test_data: String = _config.data.directory + "/" + _config.data.test
-  val main_data: String = _config.data.directory + "/" + _config.data.main
+  val test_data: String = _config.data.test
+  val main_data: String = _config.data.main
   val thread_use_or_not: Boolean = _config.threads.used_or_not
   val max_thread_num: Int = _config.threads.maximum_number
   val gherkin: String = _config.test.cucumber.gherkin
@@ -84,6 +94,9 @@ class Configuration(var configFilePath: String = "") {
   val database: String = _config.dbserver.database
   val text_table: String = _config.dbserver.text_table
   val result_table: String = _config.dbserver.result_table
+  val find_command: String = _config.dbserver.find.command
+  val find_filter: String = _config.dbserver.find.filter
+  val insert_command: String = _config.dbserver.insert.command
 
   private def getCredentials: List[String] = {
     var result: List[String] = List()

@@ -3,7 +3,6 @@ import org.apache.log4j.BasicConfigurator
 import org.mongodb.scala._
 import org.mongodb.scala.bson.{BsonValue, Document}
 import org.slf4j._
-
 import scala.concurrent._
 
 class MongoDBServer(_config: Configuration) extends DBServer(_config) {
@@ -30,12 +29,19 @@ class MongoDBServer(_config: Configuration) extends DBServer(_config) {
 
 }
 
-object test {
+/*object test {
   def main(args: Array[String]): Unit = {
-  val conf = new Configuration()
+  /*val conf = new Configuration()
   val mongo = new MongoDBServer(conf)
-  val res = mongo.execSQL("""{ "find" : "textData" }""")
-  println(res)
+  /*val res = mongo.execSQL(
+    s"""{ "insert" : "textData",
+      |"documents": [{
+      | "_id" : "TextToCount",
+      | "rawText" : "${FileHandler.read(conf.main_data)}"
+      |}] }""".stripMargin)*/
+  val res = mongo.execSQL(""" { "find" : "textData", "filter" : { "_id" : "TextToCount" } } """)
+  print(res)*/
+
 
   }
-}
+}*/

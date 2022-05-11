@@ -1,13 +1,63 @@
-[31m*** RUN ABORTED ***[0m
-[31m  java.lang.ClassNotFoundException: org.scalatestplus.junit.JUnitWrapperSuite[0m
-[31m  at java.net.URLClassLoader.findClass(URLClassLoader.java:387)[0m
-[31m  at java.lang.ClassLoader.loadClass(ClassLoader.java:418)[0m
-[31m  at java.lang.ClassLoader.loadClass(ClassLoader.java:351)[0m
-[31m  at org.scalatest.tools.Runner$.loadJUnitWrapperClass(Runner.scala:1041)[0m
-[31m  at org.scalatest.tools.Runner$.doRunRunRunDaDoRunRun(Runner.scala:1211)[0m
-[31m  at org.scalatest.tools.Runner$.$anonfun$runOptionallyWithPassFailReporter$24(Runner.scala:993)[0m
-[31m  at org.scalatest.tools.Runner$.$anonfun$runOptionallyWithPassFailReporter$24$adapted(Runner.scala:971)[0m
-[31m  at org.scalatest.tools.Runner$.withClassLoaderAndDispatchReporter(Runner.scala:1482)[0m
-[31m  at org.scalatest.tools.Runner$.runOptionallyWithPassFailReporter(Runner.scala:971)[0m
-[31m  at org.scalatest.tools.Runner$.main(Runner.scala:775)[0m
+[36mDiscovery starting.[0m
+[36mDiscovery completed in 555 milliseconds.[0m
+[36mRun starting. Expected test count is: 5[0m
+[32mReduceTaskTest:[0m
+[32mA Reducing WordCountCucumberScala_GhislainGripon.Task[0m
+[32m- should give back a list of type tuple string int[0m
+[32m- should give words as keys without punctuation[0m
+[32m- should give values superior or equal to 1[0m
+[32m- should not be empty[0m
+[32m- should not contain duplicate keys[0m
+[32mConfigurationTest:[0m
+[31mConfigurationTest *** ABORTED ***[0m
+[31m  java.lang.RuntimeException: Unable to load a Suite class that was discovered in the runpath: ConfigurationTest[0m
+[31m  at org.scalatest.tools.DiscoverySuite$.getSuiteInstance(DiscoverySuite.scala:81)[0m
+[31m  at org.scalatest.tools.DiscoverySuite.$anonfun$nestedSuites$1(DiscoverySuite.scala:38)[0m
+[31m  at scala.collection.immutable.Vector1.map(Vector.scala:1886)[0m
+[31m  at scala.collection.immutable.Vector1.map(Vector.scala:375)[0m
+[31m  at org.scalatest.tools.DiscoverySuite.<init>(DiscoverySuite.scala:37)[0m
+[31m  at org.scalatest.tools.Runner$.genDiscoSuites$1(Runner.scala:1131)[0m
+[31m  at org.scalatest.tools.Runner$.doRunRunRunDaDoRunRun(Runner.scala:1225)[0m
+[31m  at org.scalatest.tools.Runner$.$anonfun$runOptionallyWithPassFailReporter$24(Runner.scala:992)[0m
+[31m  at org.scalatest.tools.Runner$.$anonfun$runOptionallyWithPassFailReporter$24$adapted(Runner.scala:970)[0m
+[31m  at org.scalatest.tools.Runner$.withClassLoaderAndDispatchReporter(Runner.scala:1481)[0m
 [31m  ...[0m
+[31m  Cause: io.circe.DecodingFailure$$anon$2: Attempt to decode value on failed cursor: DownField(directory),DownField(data)[0m
+[31m  ...[0m
+[32mMapTaskTest:[0m
+[31mMapTaskTest *** ABORTED ***[0m
+[31m  java.lang.RuntimeException: Unable to load a Suite class that was discovered in the runpath: MapTaskTest[0m
+[31m  at org.scalatest.tools.DiscoverySuite$.getSuiteInstance(DiscoverySuite.scala:81)[0m
+[31m  at org.scalatest.tools.DiscoverySuite.$anonfun$nestedSuites$1(DiscoverySuite.scala:38)[0m
+[31m  at scala.collection.immutable.Vector1.map(Vector.scala:1886)[0m
+[31m  at scala.collection.immutable.Vector1.map(Vector.scala:375)[0m
+[31m  at org.scalatest.tools.DiscoverySuite.<init>(DiscoverySuite.scala:37)[0m
+[31m  at org.scalatest.tools.Runner$.genDiscoSuites$1(Runner.scala:1131)[0m
+[31m  at org.scalatest.tools.Runner$.doRunRunRunDaDoRunRun(Runner.scala:1225)[0m
+[31m  at org.scalatest.tools.Runner$.$anonfun$runOptionallyWithPassFailReporter$24(Runner.scala:992)[0m
+[31m  at org.scalatest.tools.Runner$.$anonfun$runOptionallyWithPassFailReporter$24$adapted(Runner.scala:970)[0m
+[31m  at org.scalatest.tools.Runner$.withClassLoaderAndDispatchReporter(Runner.scala:1481)[0m
+[31m  ...[0m
+[31m  Cause: io.circe.DecodingFailure$$anon$2: Attempt to decode value on failed cursor: DownField(directory),DownField(data)[0m
+[31m  ...[0m
+[32mMapReduceTaskTest:[0m
+[31mMapReduceTaskTest *** ABORTED ***[0m
+[31m  java.lang.RuntimeException: Unable to load a Suite class that was discovered in the runpath: MapReduceTaskTest[0m
+[31m  at org.scalatest.tools.DiscoverySuite$.getSuiteInstance(DiscoverySuite.scala:81)[0m
+[31m  at org.scalatest.tools.DiscoverySuite.$anonfun$nestedSuites$1(DiscoverySuite.scala:38)[0m
+[31m  at scala.collection.immutable.Vector1.map(Vector.scala:1886)[0m
+[31m  at scala.collection.immutable.Vector1.map(Vector.scala:375)[0m
+[31m  at org.scalatest.tools.DiscoverySuite.<init>(DiscoverySuite.scala:37)[0m
+[31m  at org.scalatest.tools.Runner$.genDiscoSuites$1(Runner.scala:1131)[0m
+[31m  at org.scalatest.tools.Runner$.doRunRunRunDaDoRunRun(Runner.scala:1225)[0m
+[31m  at org.scalatest.tools.Runner$.$anonfun$runOptionallyWithPassFailReporter$24(Runner.scala:992)[0m
+[31m  at org.scalatest.tools.Runner$.$anonfun$runOptionallyWithPassFailReporter$24$adapted(Runner.scala:970)[0m
+[31m  at org.scalatest.tools.Runner$.withClassLoaderAndDispatchReporter(Runner.scala:1481)[0m
+[31m  ...[0m
+[31m  Cause: io.circe.DecodingFailure$$anon$2: Attempt to decode value on failed cursor: DownField(directory),DownField(data)[0m
+[31m  ...[0m
+[36mRun completed in 700 milliseconds.[0m
+[36mTotal number of tests run: 5[0m
+[36mSuites: completed 2, aborted 3[0m
+[36mTests: succeeded 5, failed 0, canceled 0, ignored 0, pending 0[0m
+[31m*** 3 SUITES ABORTED ***[0m
