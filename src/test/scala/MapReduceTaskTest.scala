@@ -6,17 +6,7 @@ import scala.io.Source.fromFile
 class MapReduceTaskTest extends AnyWordSpec {
   val reduceTaskTest = new ReduceTaskTest
   val mapTaskTest = new MapTaskTest
-  var data: String = ""
-  try {
-    FileHandler.using(fromFile(new Configuration().test_data)) { source =>
-      data = source.mkString
-    }
-  }
-  catch {
-    case e: FileNotFoundException => println("Couldn't find that file. " + e.getMessage)
-    case e: IOException => println("Got an IOException! " + e.getMessage)
-  }
-
+  val data: String = FileHandler.read("src/data/TestData.txt")
   val mapReduceTask = new MapReduceTask(data)
   val mapReduceResult: List[(String, Int)] = mapReduceTask.execute()
 

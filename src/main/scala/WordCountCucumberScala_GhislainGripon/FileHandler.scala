@@ -4,7 +4,7 @@ import scala.io.Source.fromFile
 import scala.language.reflectiveCalls
 
 object FileHandler {
-  def using[A <: {def close(): Unit}, B](resource: A)(f: A => B): B =
+  private def using[A <: {def close(): Unit}, B](resource: A)(f: A => B): B =
     try {
       f(resource)
     } finally {

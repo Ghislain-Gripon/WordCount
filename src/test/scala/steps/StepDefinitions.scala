@@ -1,12 +1,9 @@
 package steps
 
-import WordCountCucumberScala_GhislainGripon.FileHandler.using
 import io.cucumber.scala.{EN, ScalaDsl}
 import WordCountCucumberScala_GhislainGripon._
 import scala.reflect.io.File
-import scala.io.Source.fromFile
 
-import java.io.{FileNotFoundException, IOException}
 
 class StepDefinitions extends ScalaDsl with EN {
   private var mapReducer: Option[MapReduceTask] = None
@@ -30,21 +27,15 @@ class StepDefinitions extends ScalaDsl with EN {
   }
 
   And("""there is text""") {() =>
-    assert(File(config.get.test_data).exists)
+    assert(File("src/data/TestData.txt").exists)
   }
 
-  When("""text is read""") {() =>
-    try {
-      val config = new Configuration()
-      using(fromFile(config.test_data)) { source => {
-        textData = source.mkString
+  When("""text is read""") { () => {
+    val config = new Configuration()
+    textData = FileHandler.read("src/data/TestData.txt")
 
-      }
-      }
-    } catch {
-      case e: FileNotFoundException => println("Couldn't find that file. " + e.getMessage)
-      case e: IOException => println("Got an IOException! " + e.getMessage)
-    }
+
+  }
   }
 
   Then("""text is given to the program""") {() =>

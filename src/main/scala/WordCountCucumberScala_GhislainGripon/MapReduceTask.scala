@@ -12,10 +12,4 @@ class MapReduceTask(Data: String) extends Task {
     reducedMapping
   }
 
-  def mapReduceResultToJson(result: List[(String, Int)], resultId: String): String = {
-    val mapReduceJsonList: String = result.map(doc => s"""{"${doc._1}" : ${doc._2}},""").mkString.dropRight(1)
-    val headOfDocument : String = s""" { "_id": "$resultId", "rawText": ["""
-    headOfDocument + mapReduceJsonList + "]}"
-    //turns the list into a string with key value pairs in json format for mongodb insertion
-  }
 }

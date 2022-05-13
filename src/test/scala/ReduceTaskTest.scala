@@ -1,8 +1,8 @@
-import WordCountCucumberScala_GhislainGripon.{MapTask, ReduceTask}
+import WordCountCucumberScala_GhislainGripon.{FileHandler, MapTask, ReduceTask}
 import org.scalatest.wordspec.AnyWordSpec
 
 class ReduceTaskTest extends AnyWordSpec {
-  val data = "This is a test string. C'est une chaine de charactères de test. Devons nous ? La victoire : (En avant !)"
+  val data: String = FileHandler.read("src/data/TestData.txt")
   val mapTask = new MapTask(data)
   val mapResult: List[(String, Int)] = mapTask.execute()
   val reduceTask = new ReduceTask(mapResult)

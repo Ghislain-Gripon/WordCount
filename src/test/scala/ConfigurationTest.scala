@@ -31,10 +31,5 @@ class ConfigurationTest extends AnyWordSpec {
       assert(config.id.isInstanceOf[String])
     }
 
-    "return the configuration file with toString" in {
-      assert(config.toString.isInstanceOf[String])
-      assert(config.toString.nonEmpty)
-    }
-
   }
 }

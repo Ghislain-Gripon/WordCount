@@ -27,6 +27,13 @@ class MongoDBServer(_config: Configuration) extends DBServer(_config) {
     mongoClient.close()
   }
 
+  override def mapReduceResultToInsertable(result: List[(String, Int)]): String = {
+    val mapReduceJsonList: String = result.map(doc => s"""{"${doc._1}" : ${doc._2}},""").mkString.dropRight(1)
+    val headOfDocument : String = s""" { "_id": "${config.main_data}", "rawText": ["""
+    headOfDocument + mapReduceJsonList + "]}"
+    //turns the list into a string with key value pairs in json format for mongodb insertion
+  }
+
 }
 
 /*object test {

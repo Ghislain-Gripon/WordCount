@@ -10,7 +10,7 @@ object MapReduce {
     val text: String = query_response.head._2.asDocument().get("firstBatch").asArray().get(0).asDocument().get("rawText").toString
     val mapReduceTask: MapReduceTask = new MapReduceTask(text)
     val result: List[(String, Int)] = mapReduceTask.execute().sortBy(doc => doc._2)(Ordering.Int.reverse)
-    val resultInJsonString: String = mapReduceTask.mapReduceResultToJson(result, config.main_data)
+    val resultInJsonString: String = db.mapReduceResultToInsertable(result).asInstanceOf[String]
     println(resultInJsonString)
     val write_response: List[(String, BsonValue)] = db.execSQL(config.insert_command.format(config.result_table, resultInJsonString)).asInstanceOf[List[(String, BsonValue)]]
     println(write_response)

@@ -1,21 +1,10 @@
-import WordCountCucumberScala_GhislainGripon.{Configuration, FileHandler, MapTask}
+import WordCountCucumberScala_GhislainGripon.{FileHandler, MapTask}
 import org.scalatest.wordspec.AnyWordSpec
-
-import java.io.{FileNotFoundException, IOException}
-import scala.io.Source.fromFile
 
 class MapTaskTest extends AnyWordSpec {
 
-  var data: String = ""
-  try {
-    FileHandler.using(fromFile(new Configuration().test_data)) { source =>
-      data = source.mkString
-    }
-  }
-  catch {
-    case e: FileNotFoundException => println("Couldn't find that file. " + e.getMessage)
-    case e: IOException => println("Got an IOException! " + e.getMessage)
-  }
+  val data: String = FileHandler.read("src/data/TestData.txt")
+
   val mapTask = new MapTask(data)
   val mapResult: List[(String, Int)] = mapTask.execute()
 
