@@ -7,7 +7,7 @@ import io.circe.yaml
 
 
 //If no path to a configuration file is provided, default location is taped, src/data/Config.yaml
-class Configuration(var configFilePath: String = "") {
+class Configuration(var configFilePath: String = "") extends Serializable {
   private var _yamlString: Option[String] = None
 
   //The root directory from which the project is run is the project one, thus we have access to all the folder structure.
@@ -18,8 +18,9 @@ class Configuration(var configFilePath: String = "") {
   _yamlString = Some(FileHandler.read(configFilePath))
 
   private case class Data(
-                 test: String,
-                 main: String
+                           directory: String,
+                           test: String,
+                           main: String
                  )
 
   private case class Scala_Test(
@@ -59,9 +60,16 @@ class Configuration(var configFilePath: String = "") {
                      database: String,
                      text_table: String,
                      result_table: String,
+                     text_field: String,
                      find: FindCommand,
-                     insert: InsertCommand
+                     insert: InsertCommand,
+                     spark_data_source: String
                      )
+
+  private case class Spark(
+                            thread_num: Int,
+                           write_mode: String
+                          )
 
   private case class Config(
                    _id: String,
@@ -69,7 +77,8 @@ class Configuration(var configFilePath: String = "") {
                    data: Data,
                    test: Test,
                    threads: Threads,
-                   dbserver: Dbserver
+                   dbserver: Dbserver,
+                   spark: Spark
                    )
 
   private val _jsonString = yaml.parser.parse(_yamlString.get)
@@ -80,6 +89,7 @@ class Configuration(var configFilePath: String = "") {
 
   val id: String = _config._id
   val version: String = _config.version
+  val data_dir: String = _config.data.directory
   val test_data: String = _config.data.test
   val main_data: String = _config.data.main
   val thread_use_or_not: Boolean = _config.threads.used_or_not
@@ -94,9 +104,13 @@ class Configuration(var configFilePath: String = "") {
   val database: String = _config.dbserver.database
   val text_table: String = _config.dbserver.text_table
   val result_table: String = _config.dbserver.result_table
+  val text_field: String = _config.dbserver.text_field
   val find_command: String = _config.dbserver.find.command
   val find_filter: String = _config.dbserver.find.filter
   val insert_command: String = _config.dbserver.insert.command
+  val engine_spark_data_source: String = _config.dbserver.spark_data_source
+  val spark_threads: Int = _config.spark.thread_num
+  val spark_write_mode: String = _config.spark.write_mode
 
   private def getCredentials: List[String] = {
     var result: List[String] = List()

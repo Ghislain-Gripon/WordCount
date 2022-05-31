@@ -1,4 +1,10 @@
+/*
+
+mongo scala driver and affiliated class provoke a conflict with mongo spark connector, both can't coexist
+
 package WordCountCucumberScala_GhislainGripon
+
+
 import org.apache.log4j.BasicConfigurator
 import org.mongodb.scala._
 import org.mongodb.scala.bson.{BsonValue, Document}
@@ -36,7 +42,7 @@ class MongoDBServer(_config: Configuration) extends DBServer(_config) {
 
 }
 
-/*object test {
+object test {
   def main(args: Array[String]): Unit = {
   /*val conf = new Configuration()
   val mongo = new MongoDBServer(conf)
@@ -51,4 +57,6 @@ class MongoDBServer(_config: Configuration) extends DBServer(_config) {
 
 
   }
-}*/
+}
+*/
+

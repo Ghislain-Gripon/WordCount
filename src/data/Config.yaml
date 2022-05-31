@@ -1,6 +1,7 @@
 _id: "MongoDB_1.0"
 version: "1.0"
 data:
+  directory: "src/data"
   test: "TestData"
   main: "TextToCount"
 test:
@@ -27,8 +28,13 @@ dbserver:
   database: "myDB"
   text_table: "textData"
   result_table: "mapreduceResults"
+  text_field: "rawText"
   find:
     command: ' { "find": "%s", "filter": %s } '
     filter: ' { "_id" : "%s" } '
   insert:
     command: ' { "insert" : "%s",  "documents" : [%s]} '
+  spark_data_source: "com.mongodb.spark.sql.DefaultSource"
+spark:
+  thread_num: 1
+  write_mode: "overwrite"
