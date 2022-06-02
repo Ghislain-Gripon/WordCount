@@ -38,3 +38,16 @@ dbserver:
 spark:
   thread_num: 1
   write_mode: "overwrite"
+kafka:
+  docker_compose_path: "/Users/ggripon/Documents/docker-spark-kafka/docker-compose-local-kafka-cluster.yml"
+  zookeeper_port: 2181
+  kafka_nodes:
+    -
+      id: "kafka-1"
+      port: 9095
+    -
+      id: "kafka-2"
+      port: 9096
+    -
+      id: "kafka-3"
+      port: 9097

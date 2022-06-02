@@ -71,6 +71,17 @@ class Configuration(var configFilePath: String = "") extends Serializable {
                            write_mode: String
                           )
 
+  case class KafkaNode(
+                              id: String,
+                              port: Int
+                              ) extends Serializable
+
+  private case class Kafka(
+                            docker_compose_path: String,
+                            zookeeper_port: Int,
+                            kafka_nodes: List[KafkaNode]
+                          )
+
   private case class Config(
                    _id: String,
                    version: String,
@@ -78,7 +89,8 @@ class Configuration(var configFilePath: String = "") extends Serializable {
                    test: Test,
                    threads: Threads,
                    dbserver: Dbserver,
-                   spark: Spark
+                   spark: Spark,
+                   kafka: Kafka
                    )
 
   private val _jsonString = yaml.parser.parse(_yamlString.get)
@@ -111,6 +123,9 @@ class Configuration(var configFilePath: String = "") extends Serializable {
   val engine_spark_data_source: String = _config.dbserver.spark_data_source
   val spark_threads: Int = _config.spark.thread_num
   val spark_write_mode: String = _config.spark.write_mode
+  val kafka_zookeeper_port: Int = _config.kafka.zookeeper_port
+  val kafka_dockercompose_file: String = _config.kafka.docker_compose_path
+  val kafka_nodes: List[KafkaNode] = _config.kafka.kafka_nodes
 
   private def getCredentials: List[String] = {
     var result: List[String] = List()
