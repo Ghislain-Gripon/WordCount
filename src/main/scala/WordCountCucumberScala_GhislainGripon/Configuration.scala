@@ -79,8 +79,14 @@ class Configuration(var configFilePath: String = "") extends Serializable {
   private case class Kafka(
                             docker_compose_path: String,
                             zookeeper_port: Int,
+                            spark_to_mongo_topic: String,
+                            kafka_to_spark_topic: String,
                             kafka_nodes: List[KafkaNode]
                           )
+
+  private case class Avro(
+                         schema_file: String
+                         )
 
   private case class Config(
                    _id: String,
@@ -90,7 +96,8 @@ class Configuration(var configFilePath: String = "") extends Serializable {
                    threads: Threads,
                    dbserver: Dbserver,
                    spark: Spark,
-                   kafka: Kafka
+                   kafka: Kafka,
+                   avro: Avro
                    )
 
   private val _jsonString = yaml.parser.parse(_yamlString.get)
@@ -126,6 +133,9 @@ class Configuration(var configFilePath: String = "") extends Serializable {
   val kafka_zookeeper_port: Int = _config.kafka.zookeeper_port
   val kafka_dockercompose_file: String = _config.kafka.docker_compose_path
   val kafka_nodes: List[KafkaNode] = _config.kafka.kafka_nodes
+  val avro_schema: String = _config.avro.schema_file
+  val spark_to_mongo_topic: String = _config.kafka.spark_to_mongo_topic
+  val kafka_to_spark_topic: String = _config.kafka.kafka_to_spark_topic
 
   private def getCredentials: List[String] = {
     var result: List[String] = List()

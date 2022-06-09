@@ -1,0 +1,8 @@
+{
+  "namespace": "kakfa_avro",
+  "type": "record",
+  "name": "text",
+  "fields":[
+    {   "name": "rawText",  "type": "string"}
+  ]
+}

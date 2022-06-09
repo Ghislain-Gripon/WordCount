@@ -5,8 +5,10 @@ package WordCountCucumberScala_GhislainGripon
 object MapReduce {
   def main(args: Array[String]): Unit = {
     @transient val config = new Configuration()
-    val sparkTask = new SparkMapReduceTask(config)
-    sparkTask.execute()
+    val kafkaTask = new KafkaSparkWordCount(config)
+    kafkaTask.execute()
+    //val sparkTask = new SparkMapReduceTask(config)
+    //sparkTask.execute()
     /*else {
       val db: DBServer = new MongoDBServer(config)
       val query_response: List[(String, BsonValue)] = db.execSQL(config.find_command.format(config.text_table, config.find_filter.format(config.main_data))).asInstanceOf[List[(String, BsonValue)]]

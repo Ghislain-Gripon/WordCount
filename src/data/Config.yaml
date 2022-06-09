@@ -41,13 +41,11 @@ spark:
 kafka:
   docker_compose_path: "/Users/ggripon/Documents/docker-spark-kafka/docker-compose-local-kafka-cluster.yml"
   zookeeper_port: 2181
+  spark_to_mongo_topic: "SparkToMongo"
+  kafka_to_spark_topic: "WordMongoCount"
   kafka_nodes:
     -
-      id: "kafka-1"
-      port: 9095
-    -
-      id: "kafka-2"
-      port: 9096
-    -
-      id: "kafka-3"
-      port: 9097
+      id: "kafka"
+      port: 9092
+avro:
+  schema_file: "src/data/schema.json"
